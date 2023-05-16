@@ -1,0 +1,32 @@
+body {
+  font-family: Open Sans, Arial;
+  color: black;
+  background-color: white;
+}
+
+main {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+img {
+  max-width: 100%;
+}
+
+a { color: #5b8499; }
+
+pre {
+  border-radius: 10px;
+  background-color: #f3f3f3f3;
+  padding: 10px;
+  overflow: scroll;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+.date {
+  font-weight: bold;
+}

@@ -1,0 +1,56 @@
+-----
+title: This Website Was Made Using My Own Static Site Generator!
+description: txt2web is a VERY simple static site generator I created in C.
+tags: C, programming, txt2web, plaintext, ssg, static site generator
+date: May 12 2023
+-----
+
+# {title}
+## {date}
+
+This blog was created using txt2web, which is a very simple C program that I wrote.
+txt2web takes a directory of txt files and builds a static HTML blog website with
+each text file being a blog post.
+You can view or compile the project here: https://github.com/masonarmand/txt2web
+
+Each blog post is formatted as so:
+```
+-----
+title: The title of the blog post
+description: HTML meta description of the page
+tags: comma, seperated, html, meta, tags
+date: May 12 2023
+-----
+
+# This is a heading
+## Heading size depends on number of pound signs (#) Like in markdown.
+
+You can add images as so:
+@filename.png
+```
+Lets review the basic syntax. Everything enclosed in the five dashed lines is meta info,
+which doesn't actually appear in the blog post. The title gets turned into an html title tag,
+and the description and tags are also just HTML meta information. The date is the only thing
+special, which gets shown alongside your blog post titles on the homepage. You can make headings
+using pound signs (like in markdown). To display an image you simply use the @ symbol followed by
+the file name of the image. Also, any files (images, directories, etc) in the project folder will
+get copied into the html output folder. The title and date can also be inserted into the document like this:
+
+```
+# {title}
+The above heading will have the title of the document
+The heading below will have the date of the document
+## {date}
+```
+
+Also, to make code blocks (like the ones in this blog post), you use three backticks (like this: ```) and you surround your code in them. here is an example:
+
+```
+ ```
+ Code goes here
+ ```
+```
+
+The last thing you need to know is that you need to create a file called 'index' formatted the same way as a blog post.
+This file will end up being the homepage and a list of links to all the blog posts (sorted by date) will be added to
+it automatically.

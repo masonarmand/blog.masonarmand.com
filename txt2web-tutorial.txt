@@ -1,0 +1,83 @@
+-----
+title: Getting started with txt2web
+description: How to setup and use txt2web, a static site generator.
+tags: txt2web, tutorial, github
+date: May 15 2023
+-----
+
+# {title}
+## {date}
+
+### Getting started
+First clone the txt2web repository:
+```
+git clone https://github.com/masonarmand/txt2web.git
+```
+Then change into the txt2web source directory:
+```
+cd txt2web
+```
+Finally build and install txt2web using make (Make sure you have make and gcc installed).
+```
+sudo make install
+```
+
+### Creating the homepage
+First, if you haven't already, create a project directory.
+Then, create a file simply called index (no file extensions). The index file is the homepage, it is also formatted the same as a normal blog post. The homepage will also automatically
+get a list of links to all the blog posts sorted by date added to it. Here is an example
+index file, which simply shows the title of the website.
+```
+-----
+title: Txt2web, static website generator.
+description: This is a cool website
+tags: tags, go, here
+date: May 15 2023
+-----
+# {title}
+```
+When this website is built, the end result will be a webpage with a title at the top and a
+list of blog posts (which currently we have none).
+
+### Creating a blog post
+To create a blog post, create a .txt file with any name that you like. Its contents will be
+formatted the same as above.
+```
+-----
+title: My blog post
+description: Hello World!
+tags: blog, html, txt2web
+date: May 15 2023
+-----
+# {title}
+## {date}
+
+This is a blogpost!
+```
+
+Now to build the site run txt2web in the source directory of your project and then specify
+and output directory. Also make sure there is nothing inside of the output directory because
+everything inside will be completely deleted before building.
+```
+txt2web <output_directory>
+```
+If you view the generated website, you should see this for the homepage:
+@/img/index.png
+
+And the blog post should look like this:
+@/img/blogpost.png
+
+To make it look nicer you can create your own theme or use one from the txt2web repository. Simply name it 'style.css' and
+put it in the source directory of your project. If you want a page to use additional stylesheets you can add the style
+attribute in the header of your blog post like this:
+```
+-----
+title: blog
+date: May 15 2023
+style: your-stylesheet.css
+-----
+```
+Also, to add images just simply type an @ symbol followed by the name of your image file.
+```
+@image.png
+```

@@ -1,0 +1,12 @@
+-----
+title: Mason Armand's Blog
+description:
+tags:
+date:
+-----
+@/img/kanazawa.webp
+# {title}
+This is my personal blog where I will upload my writings and projects.
+This website was created using a program I wrote called txt2web. txt2web
+is a very simple static site generator written in C, you can view it
+here: https://github.com/masonarmand/txt2web
