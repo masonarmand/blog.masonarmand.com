@@ -1,7 +1,18 @@
+html {
+  font-size: 22px;
+}
+
 body {
-  font-family: Open Sans, Arial;
+  font-family: chanticleer, Serif;
   color: black;
   background-color: white;
+}
+
+@font-face {
+  font-family: chanticleer;
+  src: url("/fnt/chanticleer.otf");
+
+  font-display: swap;
 }
 
 main {
@@ -14,17 +25,27 @@ img {
 }
 
 a { color: #5b8499; }
+p { text-align: justify; }
+h1, h2 {
+  margin-top: 0;
+  margin-bottom: 10px
+}
 
 pre {
   border-radius: 10px;
   background-color: #f3f3f3f3;
   padding: 10px;
   overflow: scroll;
+  font-size: 12px;
 }
 
 nav ul {
   list-style: none;
   padding: 0;
+}
+
+nav ul li {
+  margin-bottom: 10px;
 }
 
 .date {

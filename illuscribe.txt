@@ -1,0 +1,137 @@
+-----
+title: Presenting Slideshows From Plaintext Using illuscribe!
+description: How to setup and use illuscribe, my application that presents slideshows from plaintext.
+tags: txt2web, tutorial, github
+date: Jun 9 2023
+-----
+
+# {title}
+## {date}
+
+I created a tool/markup language called 'illuscribe' which allows you to create slideshows from plaintext.
+The program is written in C using the Xlib and stb_image libraries. It parses plaintext files that look like this:
+```
+template: "split-image"
+    box: "title", stack-vertical, align-center
+    box: "content-left", stack-horizontal, align-left
+    box: "content-right", stack-horizontal, align-center
+end
+slide: "starry-night-slide"
+    uses: "split-image"
+    define: "title"
+        text: title, "Starry Night"
+    end
+    define: "content-left"
+        text: normal, "Painted in June 1889, it depicts the view from the east-facing window of his asylum room."
+        text: normal, "It has been in the permanent collection of the Museum of Modern Art in New York City since 1941."
+    end
+    define: "content-right"
+        image: "images/starrynight.png"
+    end
+end
+```
+and converts them into this:
+@/img/illuscribe-example-img.png
+
+You create slides by writing 'slide:' and then the name of the slide:
+```
+slide: "example-slide"
+
+end
+```
+
+Inside of these slides you can create things called 'boxes'. Boxes can either stack vertically or horizontally,
+you can also set the text alignment. Here is an example with one vertical box for the title, and one horizontal
+box for the content of the slide:
+```
+slide: "example-slide"
+  box: "title-box", stack-vertical, align-center
+  box: "content-box", stack-horizontal, align-left
+end
+```
+This will create our boxes, however they are currently empty. We can add text and images to boxes by adding them
+inside of a 'define' block as so:
+```
+slide: "example-slide"
+  box: "title-box", stack-vertical, align-center
+  box: "content-box", stack-horizontal, align-left
+
+  define: "title-box"
+    text: title, "Hello World!"
+  end
+
+  define: "content-box"
+    text: normal, "This is an example slideshow"
+    image: "filename.png"
+  end
+end
+```
+Inside of these define blocks we can add text by writing 'text' and then specifying the font size and the content
+of the text. There are four font sizes: huge, title, normal, and small. To add images you simply write 'image'
+followed by the filename of the image.
+
+If you have a lot of slides with the same layout, you can define your layout in a template like this:
+```
+template: "my-template"
+  box: "title-box", stack-vertical, align-center
+  box: "content-box", stack-horizontal, align-left
+end
+```
+and then you can make slides 'use' these templates like this:
+```
+slide: "example-slide"
+  uses: "my-template"
+
+  define: "title-box"
+    text: title, "Hello World!"
+  end
+
+  define: "content-box"
+    text: normal, "This is an example slideshow"
+    image: "filename.png"
+  end
+end
+```
+You can also include entire slides inside of other slides like this:
+```
+slide: "example-slide"
+  uses: "my-template"
+
+  define: "title-box"
+    text: title, "Hello World!"
+  end
+
+  define: "content-box"
+    text: normal, "This is an example slideshow"
+    image: "filename.png"
+  end
+end
+
+slide: "second-slide"
+  uses: "example-slide"
+
+  define: "content-box"
+    text: normal, "This is more text added to the previous slide!"
+  end
+end
+```
+
+Then to render your slideshow you can simply run
+```
+illuscribe <path-to-your-slideshow>
+```
+
+To install this software simply clone the github repository and run make install:
+```
+git clone https://github.com/masonarmand/illuscribe.git
+cd illuscribe
+sudo make install
+```
+
+For more information, you can view the GitHub repo here:
+
+https://github.com/masonarmand/illuscribe
+
+Video demonstration:
+
+https://www.youtube.com/watch?v=psUbH35gOJk
